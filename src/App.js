@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+// App.js
+
+// Reference Site: https://learnwithparam.com/blog/learn-react-hooks-by-building-books-search/
+
+import React, {useState} from 'react';
 import './App.css';
 
-function App() {
+import axios from 'axios';
+
+const App = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const onInputChange = (e) => {
+    setSearchTerm(e.target.value);
+
+
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <section>
+      <form onSubmit={onSubmitHandler}>
+        <label>
+          <span>Google Book Search</span>
+          <input 
+            type="search" 
+            placeholder="Book Title" 
+            value={searchTerm}
+            onChange = {onInputChange}
+          />
+          <button type="submit">SEARCH</button>
+        </label>
+      </form>
+    </section>
+  )
+
 }
 
 export default App;
